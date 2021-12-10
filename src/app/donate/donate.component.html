@@ -1,0 +1,20 @@
+<div class="container text-center" *ngIf="role != 'patient'">
+  <h2 class="mt-5 mb-4">Donate as you wish :)</h2>
+
+  <div class="mt-4">
+    <label for="input">Enter amount: $</label>
+    <input type="text" name="input" #value>
+  </div>
+  <div class="mt-4">
+    <button (click)="makePayment(value)" class="btn btn-success btn-block">Pay</button>
+  </div>
+</div>
+
+
+<div class="container text-center" *ngIf="role == 'patient'">
+  <h2 class="mt-5 mb-4">Please click on Fee button to proceed with payment :)</h2>
+
+  <div class="mt-4">
+    <button (click)="makePayment(35)" class="btn btn-primary btn-block">Pay Fee = $35</button>
+  </div>
+</div>

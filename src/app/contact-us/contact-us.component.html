@@ -1,0 +1,34 @@
+
+<div class="col-md-12">
+  <div class="card card-container">
+    <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" name="name" [(ngModel)]="form.name" required #name="ngModel" />
+        <div class="alert alert-danger" role="alert" *ngIf="name.errors && f.submitted">
+          Name is required!
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="email">email</label>
+        <input type="text" class="form-control" name="email" [(ngModel)]="form.email" required #email="ngModel" />
+        <div class="alert alert-danger" role="alert" *ngIf="email.errors && f.submitted">
+          email is required!
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="category">Category</label>
+        <input type="text" class="form-control" name="category" [(ngModel)]="form.category" required #category="ngModel" />
+        <div class="alert alert-danger" role="alert" *ngIf="category.errors && f.submitted">
+          category is required!
+        </div>
+      </div>
+      <div class="form-group">
+        <button class="btn btn-success btn-block">
+          Submit
+        </button>
+        <button class="btn btn-warning btn-block mt-2" (click)="goToHome()">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>

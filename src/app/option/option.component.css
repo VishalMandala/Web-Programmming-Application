@@ -1,0 +1,13 @@
+.top-margin {
+  margin-top: 10%;
+}
+
+.card {
+  cursor: pointer;
+  height: 100%;
+  width: 80%;
+}
+
+.card:hover {
+  box-shadow: 0 0 11px rgba(33,33,33,.2);
+}
