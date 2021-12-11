@@ -1,6 +1,11 @@
 const mongoose = require("mongoose")
 const dotenv = require('dotenv')
 const app = require('./app')
+const httpServer = require('http').createServer(app);
+const io = require('socket.io')(httpServer, {
+    cors: {origin : '*'}
+  });
+
 
 dotenv.config({path:'./config.env'})
 
@@ -12,4 +17,17 @@ mongoose.connect(process.env.MONGOURI,{
 
 const PORT = process.env.PORT || 5000
 
-app.listen(PORT,()=>{console.log(`Application is running on ${PORT}`)})
+io.on('connection', (socket) => {
+    console.log('a user connected');
+  
+    socket.on('message', (message) => {
+      console.log(message);
+      io.emit('message', `${socket.id.substr(0, 2)} said ${message}`);
+    });
+  
+    socket.on('disconnect', () => {
+      console.log('a user disconnected!');
+    });
+  });
+
+  httpServer.listen(PORT,()=>{console.log(`Application is running on ${PORT}`)})
