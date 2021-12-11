@@ -6,6 +6,7 @@ const contactRouter = require("./routes/contactus.js")
 const cors=require("cors")
 const app = express()
 
+
 const corsOptions ={
     origin:'*', 
     credentials:true,            
@@ -18,7 +19,6 @@ app.use(express.json())
 app.use("/connpsych/users",userRouter)
 app.use("/connpsych/experts",expertRouter)
 app.use("/connpsych/contactus",contactRouter)
-
 
 //app.use("/api/password-reset", passwordReset);
 
