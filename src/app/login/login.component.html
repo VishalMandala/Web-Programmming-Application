@@ -1,0 +1,54 @@
+<div class="container-fluid" style="margin-top: 5%;" *ngIf="option.length == 0">
+  <div class="row text-center">
+    <h1>
+      <span style="margin-right: 9%;">
+        Please select option for login
+      </span>
+      <app-option *ngIf="option.length == 0 " (role)="optionSelected($event)"></app-option>
+    </h1>
+  </div>
+</div>
+
+
+<div *ngIf="option.length > 0" class="col-md-12">
+  <div class="card card-container">
+    <img id="profile-img" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" class="profile-img-card" />
+    <form *ngIf="!isLoggedIn" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+      <div class="form-group">
+        <label for="email">email</label>
+        <input type="text" class="form-control" name="email" [(ngModel)]="form.email" required #email="ngModel" />
+        <div class="alert alert-danger" role="alert" *ngIf="email.errors && f.submitted">
+          email is required!
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" class="form-control" name="password" [(ngModel)]="form.password" required minlength="3"
+          #password="ngModel" />
+        <div class="alert alert-danger" role="alert" *ngIf="password.errors && f.submitted">
+          <div *ngIf="password.errors.required">Password is required</div>
+          <div *ngIf="password.errors.minlength">
+            Password must be at least 6 characters
+          </div>
+        </div>
+      </div>
+      <a href="#" class="link" style="margin-top: 20%;margin-bottom: 20%;" routerLink="/reset-password">Forgot Password?</a>
+
+      <div class="form-group">
+        <button class="btn btn-primary btn-block">
+          Login
+        </button>
+        <button class="btn btn-warning btn-block mt-2" (click)="resetOption()">Cancel</button>
+      </div>
+      <div class="form-group">
+        <div class="alert alert-danger" role="alert" *ngIf="f.submitted && isLoginFailed">
+          Login failed: {{ errorMessage }}
+        </div>
+      </div>
+    </form>
+
+    <div class="alert alert-success" *ngIf="isLoggedIn">
+      Logged in as {{option}}.
+    </div>
+  </div>
+</div>
