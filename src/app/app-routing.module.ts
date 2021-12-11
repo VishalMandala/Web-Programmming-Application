@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
+
 import { HomeComponent } from './home/home.component';
 import { ProfileComponent } from './profile/profile.component';
 import { OptionComponent } from './option/option.component';
@@ -12,10 +13,12 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
 import { BlogsComponent } from './blogs/blogs.component';
 import { UpdateProfileComponent } from './update-profile/update-profile.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import {ChatInboxComponent} from './chat-inbox/chat-inbox.component'
 
 const routes: Routes = [
   { path: 'option', component: OptionComponent },
   { path: 'home', component: HomeComponent },
+    { path: 'chat', component: ChatInboxComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'profile', component: ProfileComponent },

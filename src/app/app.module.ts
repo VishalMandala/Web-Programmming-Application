@@ -17,6 +17,7 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
 import { BlogsComponent } from './blogs/blogs.component';
 import { UpdateProfileComponent } from './update-profile/update-profile.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { ChatInboxComponent } from './chat-inbox/chat-inbox.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
     LoginComponent,
     HomeComponent,
     ProfileComponent,
+    ChatInboxComponent,
     OptionComponent,
     PatientDashboardComponent,
     DonateComponent,
