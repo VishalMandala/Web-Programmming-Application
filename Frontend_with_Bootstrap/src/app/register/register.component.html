@@ -1,0 +1,218 @@
+<div class="container-fluid" style="margin-top: 5%;" *ngIf="option.length == 0">
+  <div class="row text-center">
+    <h1>
+      <span style="margin-right: 9%;">
+        Please select option for Signup
+      </span>
+      <app-option *ngIf="option.length == 0 " (role)="optionSelected($event)"></app-option>
+    </h1>
+  </div>
+</div>
+
+<div class="col-md-12" *ngIf="option.length > 0 && option == 'patient'">
+  <div class="card card-container">
+    <img id="profile-img" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" class="profile-img-card" />
+    <form *ngIf="!isSuccessful" name="patientForm" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+      <div class="form-group">
+        <label for="firstname">First Name</label>
+        <input type="text" class="form-control" name="firstname" [(ngModel)]="patientForm.firstname" required
+          minlength="3" maxlength="20" #firstname="ngModel" />
+        <div class="alert-danger" *ngIf="firstname.errors && f.submitted">
+          <div *ngIf="firstname.errors.required">firstname is required</div>
+          <div *ngIf="firstname.errors.minlength">
+            firstname must be at least 3 characters
+          </div>
+          <div *ngIf="firstname.errors.maxlength">
+            firstname must be at most 20 characters
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="lastname">Last Name</label>
+        <input type="text" class="form-control" name="lastname" [(ngModel)]="patientForm.lastname" required
+          minlength="3" maxlength="20" #lastname="ngModel" />
+        <div class="alert-danger" *ngIf="lastname.errors && f.submitted">
+          <div *ngIf="lastname.errors.required">lastname is required</div>
+          <div *ngIf="lastname.errors.minlength">
+            lastname must be at least 3 characters
+          </div>
+          <div *ngIf="lastname.errors.maxlength">
+            lastname must be at most 20 characters
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" class="form-control" name="email" [(ngModel)]="patientForm.email" required email
+          #email="ngModel" />
+        <div class="alert-danger" *ngIf="email.errors && f.submitted">
+          <div *ngIf="email.errors.required">Email is required</div>
+          <div *ngIf="email.errors.email">
+            Email must be a valid email address
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" class="form-control" name="password" [(ngModel)]="patientForm.password" required
+          minlength="3" #password="ngModel" />
+        <div class="alert-danger" *ngIf="password.errors && f.submitted">
+          <div *ngIf="password.errors.required">Password is required</div>
+          <div *ngIf="password.errors.minlength">
+            Password must be at least 3 characters
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="age">Age</label>
+        <input type="age" class="form-control" name="age" [(ngModel)]="patientForm.age" required minlength="2"
+          #age="ngModel" />
+        <div class="alert-danger" *ngIf="age.errors && f.submitted">
+          <div *ngIf="age.errors.required">Age is required</div>
+          <div *ngIf="age.errors.minlength">
+            Age must be in between 1 and 99
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="gender">Gender</label>
+        <input type="gender" class="form-control" name="gender" [(ngModel)]="patientForm.gender" required minlength="4"
+          #gender="ngModel" />
+        <div class="alert-danger" *ngIf="gender.errors && f.submitted">
+          <div *ngIf="gender.errors.required">Gender is required</div>
+          <div *ngIf="gender.errors.minlength">
+            please enter Correct gender
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="city">City</label>
+        <input type="city" class="form-control" name="city" [(ngModel)]="patientForm.city" required minlength="2"
+          #city="ngModel" />
+        <div class="alert-danger" *ngIf="city.errors && f.submitted">
+          <div *ngIf="city.errors.required">City is required</div>
+          <div *ngIf="city.errors.minlength">
+            Please enter city less than 6 chars
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="state">State</label>
+        <input type="state" class="form-control" name="state" [(ngModel)]="patientForm.state" required minlength="2"
+          #state="ngModel" />
+        <div class="alert-danger" *ngIf="state.errors && f.submitted">
+          <div *ngIf="state.errors.required">State is required</div>
+          <div *ngIf="state.errors.minlength">
+            Please enter state less than 6 chars
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <button class="btn btn-primary btn-block">Sign Up</button>
+        <button class="btn btn-warning btn-block mt-2" (click)="resetOption()">Cancel</button>
+      </div>
+
+      <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
+        Signup failed!<br />{{ errorMessage }}
+      </div>
+    </form>
+
+    <div class="alert alert-success" *ngIf="isSuccessful">
+      Your registration is successful!
+    </div>
+  </div>
+</div>
+
+
+<!-- Expert Signup -->
+<div class="col-md-12" *ngIf="option.length > 0 && option == 'expert'">
+  <div class="card card-container">
+    <img id="profile-img" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" class="profile-img-card" />
+    <form *ngIf="!isSuccessful" name="expertForm" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" name="name" [(ngModel)]="expertForm.name" required minlength="3"
+          maxlength="20" #name="ngModel" />
+        <div class="alert-danger" *ngIf="name.errors && f.submitted">
+          <div *ngIf="name.errors.required">name is required</div>
+          <div *ngIf="name.errors.minlength">
+            name must be at least 3 characters
+          </div>
+          <div *ngIf="name.errors.maxlength">
+            name must be at most 20 characters
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" class="form-control" name="email" [(ngModel)]="expertForm.email" required email
+          #email="ngModel" />
+        <div class="alert-danger" *ngIf="email.errors && f.submitted">
+          <div *ngIf="email.errors.required">Email is required</div>
+          <div *ngIf="email.errors.email">
+            Email must be a valid email address
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" class="form-control" name="password" [(ngModel)]="expertForm.password" required
+          minlength="3" #password="ngModel" />
+        <div class="alert-danger" *ngIf="password.errors && f.submitted">
+          <div *ngIf="password.errors.required">Password is required</div>
+          <div *ngIf="password.errors.minlength">
+            Password must be at least 3 characters
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="qualification">Qualification</label>
+        <input type="text" class="form-control" name="qualification" [(ngModel)]="expertForm.qualification" required
+          minlength="3" maxlength="20" #qualification="ngModel" />
+        <div class="alert-danger" *ngIf="qualification.errors && f.submitted">
+          <div *ngIf="qualification.errors.required">qualification is required</div>
+          <div *ngIf="qualification.errors.minlength">
+            qualification must be at least 3 characters
+          </div>
+          <div *ngIf="qualification.errors.maxlength">
+            qualification must be at most 20 characters
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="status">Status</label>
+        <input type="status" class="form-control" name="status" [(ngModel)]="expertForm.status" required minlength="2"
+          #status="ngModel" />
+        <div class="alert-danger" *ngIf="status.errors && f.submitted">
+          <div *ngIf="status.errors.required">status is required</div>
+          <div *ngIf="status.errors.minlength">
+            status must be in between 1 and 99
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="specialization">Specialization</label>
+        <input type="specialization" class="form-control" name="specialization" [(ngModel)]="expertForm.specialization"
+          required minlength="6" #specialization="ngModel" />
+        <div class="alert-danger" *ngIf="specialization.errors && f.submitted">
+          <div *ngIf="specialization.errors.required">specialization is required</div>
+          <div *ngIf="specialization.errors.minlength">
+            please enter Correct specialization
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <button class="btn btn-primary btn-block">Sign Up</button>
+        <button class="btn btn-warning btn-block mt-2" (click)="resetOption()">Cancel</button>
+      </div>
+
+      <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
+        Signup failed!<br />{{ errorMessage }}
+      </div>
+    </form>
+
+    <div class="alert alert-success" *ngIf="isSuccessful">
+      Your registration is successful!
+    </div>
+  </div>
+</div>

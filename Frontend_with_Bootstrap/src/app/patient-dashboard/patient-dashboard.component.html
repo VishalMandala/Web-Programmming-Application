@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="row">
+    <div class="col-4" *ngFor="let expert of experts">
+      <div class="card" style="width: 18rem;">
+        <img src="https://i.pinimg.com/474x/16/a7/83/16a783bb1d1586d6c1d58ac144cfe7b2.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">{{expert.specialization}}</h5>
+          <p class="card-text">{{expert.email}}</p>
+          <p class="card-text">{{expert.name}}</p>
+          <p class="card-text">{{expert.qualification}}</p>
+          <p class="card-text">{{expert.status}}</p>
+          <button class="btn btn-primary" (click)="startChat()" [disabled]="expert.status=='offline'">Start Chat</button>
+          <p class="card-text text-danger" *ngIf="expert.status=='offline'" >Expert is Offline, Comeback later</p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

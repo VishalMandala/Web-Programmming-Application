@@ -1,0 +1,43 @@
+
+<div class="container" *ngIf="currentUser && role == 'expert'">
+  <header class="jumbotron">
+
+    <div class="card" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title">{{ data.name }}</h5>
+        </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">Email: {{ data.email }}</li>
+        <li class="list-group-item">Qualification: {{ data.qualification }}</li>
+        <li class="list-group-item">Specialization:{{ data.specialization }}</li>
+        <li class="list-group-item">Status:{{ data.status }}</li>
+      </ul>
+      <div class="card-body">
+        <button class="btn btn-primary" (click)='goToUpdateProfile()'>Update Profile</button>
+      </div>
+    </div>
+  </header>
+  
+</div>
+
+<div class="container" *ngIf="currentUser && role == 'patient'">
+  <header class="jumbotron">
+
+    <div class="card" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title">{{ data.firstname }} {{ data.lastname }}</h5>
+        </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">Email: {{ data.email }}</li>
+        <li class="list-group-item">Age: {{ data.age }}</li>
+        <li class="list-group-item">Gender: {{ data.gender }}</li>
+        <li class="list-group-item">City: {{ data.city }}</li>
+        <li class="list-group-item">State: {{ data.state }}</li>
+      </ul>
+      <div class="card-body">
+        <button class="btn btn-primary" (click)='goToUpdateProfile()'>Update Profile</button>
+      </div>
+    </div>
+  </header>
+  
+</div>

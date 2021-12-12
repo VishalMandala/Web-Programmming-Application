@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <style type="donate.css"></style>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Donate Form</title>
+</head>
+<body>
+    <div class="flex justify-center mt-32">
+        <h1>Make a donation, Make a difference</h1>
+        <form action="/charge" method="post">
+            <label for="email">Email:</label>
+            <input type="email" name="email" placeholder="Email" />
+            <label for="amount">$</label>
+            <input type="number" name="amount" value="2" />
+            <div id="payment-card"></div>
+            <div id="payment-errors"></div>
+            <button>Submit</button>
+        </form>
+    </div>
+    <script src="https://js.stripe.com/v3/"></script>
+    <script src="payment.js"></script>
+</body>
+</html>
