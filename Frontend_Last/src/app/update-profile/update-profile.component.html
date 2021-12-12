@@ -1,0 +1,42 @@
+
+<div class="col-md-12" *ngIf="role == 'expert' && currentUser">
+  <div class="card card-container">
+    <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+      <div class="form-group">
+        <label for="name">Name (optional)</label>
+        <input type="text" class="form-control" placeholder="{{oldname}}" name="name" [(ngModel)]="expertForm.name" #name="ngModel" />
+      </div>
+      <div class="form-group">
+        <label for="email">Email (optional)</label>
+        <input type="email" class="form-control" placeholder="{{oldemail}}" name="email" [(ngModel)]="expertForm.email" #email="ngModel" />
+      </div>
+      <div class="form-group">
+        <button class="btn btn-success btn-block">
+          Update profile
+        </button>
+        <button class="btn btn-warning btn-block mt-2" (click)="goToProfile()">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="col-md-12" *ngIf="role == 'patient'&& currentUser">
+  <div class="card card-container">
+    <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+      <div class="form-group">
+        <label for="firstname">First Name (optional)</label>
+        <input type="text" class="form-control" placeholder="{{oldname}}" name="firstname" [(ngModel)]="patientForm.firstname" #firstname="ngModel" />
+      </div>
+      <div class="form-group">
+        <label for="email">Email (optional)</label>
+        <input type="email" class="form-control" placeholder="{{oldemail}}" name="email" [(ngModel)]="patientForm.email" #email="ngModel" />
+      </div>
+      <div class="form-group">
+        <button class="btn btn-success btn-block">
+          Update profile
+        </button>
+        <button class="btn btn-warning btn-block mt-2" (click)="goToProfile()">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>

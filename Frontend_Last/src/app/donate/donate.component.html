@@ -1,0 +1,33 @@
+<div class="container text-center" *ngIf="role != 'patient'">
+  <h2 class="mt-5 mb-4" style="font-family: serif;font-size: 350%;">DONATE HERE</h2>
+  <img width="20%" src="https://nonprofitquarterly.org/wp-content/uploads/2018/04/give-online-featured.jpg">
+
+  <div class="mt-4" style="font-family: serif;font-size: 150%;">
+    <label for="input">Enter an Amount: $</label>
+    <input type="number" name="input" [(ngModel)]="amount" required min="1" #age="ngModel">
+  </div>
+  <div class="mt-4">
+    <button (click)="makePayment(amount)" class="btn btn-success btn-block" [disabled]="amount <= 0">Pay Now</button>
+  </div>
+</div>
+
+
+<div class="container text-center" *ngIf="role == 'patient'&&!paymentDone">
+  <h2 class="mt-5 mb-4">Please click on Pay to proceed with Payment</h2>
+
+  <div class="mt-4">
+    <button (click)="makePayment(100)" class="btn btn-primary btn-block">Pay $100</button>
+  </div>
+</div>
+
+
+<div class="container text-center" *ngIf="role == 'patient'&&paymentDone">
+  <h2 class="mt-5 mb-4">Please click on Start Chat for a better Headspace</h2>
+
+  <div class="mt-4">
+    <button (click)="startChat()" class="btn btn-primary btn-block">Start Chat</button>
+  </div>
+</div>
+
+
+
