@@ -29,6 +29,9 @@
     </ul>
 
     <ul class="navbar-nav ml-auto" *ngIf="isLoggedIn">
+      <li class="nav-item" *ngIf="this.isLoggedIn">
+        <a href="/in-app" class="nav-link" routerLink="in-app"  [queryParams]="{logged: isLoggedIn, role: role}">In app Journal</a>
+      </li>
       <li class="nav-item"  *ngIf="this.isLoggedIn">
         <a href="/profile" class="nav-link" routerLink="profile" *ngIf="role == 'expert' || role == 'patient'" [queryParams]="{logged: isLoggedIn, role: role}">Profile</a>
       </li>
