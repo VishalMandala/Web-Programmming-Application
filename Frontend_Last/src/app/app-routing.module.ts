@@ -13,9 +13,11 @@ import { BlogsComponent } from './blogs/blogs.component';
 import { UpdateProfileComponent } from './update-profile/update-profile.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import {InAppJournalComponent} from './in-app-journal/in-app-journal.component'
 
 const routes: Routes = [
   { path: 'option', component: OptionComponent },
+  { path: 'in-app', component: InAppJournalComponent },
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },

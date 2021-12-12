@@ -18,6 +18,7 @@ import { BlogsComponent } from './blogs/blogs.component';
 import { UpdateProfileComponent } from './update-profile/update-profile.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { InAppJournalComponent } from './in-app-journal/in-app-journal.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     BlogsComponent,
     UpdateProfileComponent,
     ResetPasswordComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    InAppJournalComponent
   ],
   imports: [
     BrowserModule,
