@@ -22,7 +22,7 @@ var nodemailer = require('nodemailer');
         from: 'youremail@gmail.com',
         to: email,
         subject: 'Payment of $100 Was Successful',
-        text: `Thank You ${username} for your Payment. Begin chatting now with our ${room}`
+        text: `Thank You ${username} for your Payment. Begin chatting with our Expert.`
       } 
       
       transporter.sendMail(mailOptions, function(error, info){

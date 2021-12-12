@@ -39,7 +39,7 @@ const contactDatPost =async (req,res)=>{
                 to: email,
                 subject: 'Thank You for connecting with CONNPSYCH',
                 text: `Your Response has been recorded & we will get back to you shortly!
-                {break;} Name: ${name} Email: (${email}) Category: ${category}`
+                Name: ${name} Email: (${email}) Category: ${category}`
               }
             
               // Attempt to send the email
