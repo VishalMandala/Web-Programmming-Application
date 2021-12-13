@@ -7,7 +7,7 @@ import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { ProfileComponent } from './profile/profile.component';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { authInterceptorProviders } from './helpers/auth.interceptor';
 import { OptionComponent } from './option/option.component';
@@ -40,6 +40,7 @@ import { InAppJournalComponent } from './in-app-journal/in-app-journal.component
   imports: [
     BrowserModule,
     AppRoutingModule,
+    ReactiveFormsModule,
     FormsModule,
     HttpClientModule
   ],

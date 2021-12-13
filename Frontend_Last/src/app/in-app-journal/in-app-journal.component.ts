@@ -3,20 +3,18 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-in-app-journal',
-  templateUrl: './in-app-journal.component.html',
-  styleUrls: ['./in-app-journal.component.css']
+  templateUrl: './in-app-journal.component.html'
 })
 export class InAppJournalComponent implements OnInit {
   NoteArr = []
-  formdata: any;
+  formdata: FormGroup = new FormGroup({
+    text: new FormControl("", Validators.required),
+ });
 
   constructor() { }
 
   
   ngOnInit(): void {
-    this.formdata = new FormGroup({
-      text: new FormControl("", Validators.required),
-   });
   }
 
   onClickSubmit() {
@@ -25,7 +23,7 @@ export class InAppJournalComponent implements OnInit {
     console.log(this.NoteArr)
   }
 
-  delete(i) {
+  delete(i:any) {
     this.NoteArr.splice(i,1);
   }
 
